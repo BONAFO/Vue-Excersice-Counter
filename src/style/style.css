@@ -1,0 +1,43 @@
+
+
+.counter {
+    transition: color 0.3s;
+  }
+  
+  .btn , h3{
+      font-size:5vh;
+  }
+  
+  .btn{
+      margin: 0% .3%;
+      border: 1px solid #000;
+      cursor: pointer;
+      width: 100px;
+  }
+  
+  .btn-r{
+   border: 2px solid red;
+   background-color: red;
+  }
+  .btn-g{
+   border: 2px solid greenyellow;    
+   background-color: greenyellow;
+  }
+  .btn-y{
+   border: 2px solid yellow;    
+   background-color: yellow;
+  }
+
+  .c-c-r{
+    color: red;
+  }
+
+  .c-c-g{
+    color: greenyellow;
+  }
+
+  .c-c-y{
+    color: yellow;
+  }
+
+  
