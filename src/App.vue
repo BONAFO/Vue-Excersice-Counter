@@ -1,7 +1,9 @@
 <!-- Contador que aumente y disminuya por buttons -->
 <!-- Button para resetear -->
 <!-- Red < 0 , Yellow = 0 , Green > 0 -->
-
+<!-- Agregar button para favoritos -->
+<!-- Bloquear el button para que no se pueda agregar el mismo -->
+<!-- Mostar array como lista -->
 <template>
   <div>
     <h3 class="counter">
@@ -9,25 +11,43 @@
     </h3>
     <br />
     <div>
-      <button @click="update_counter('d')"  class="btn btn-r">-</button>
-      <button @click="update_counter('r')"  class="btn btn-y">Reset</button>
-      <button @click="update_counter('a')"  class="btn btn-g">+</button>
+      <button @click="update_counter('d')" class="btn btn-r">-</button>
+      <button @click="update_counter('r')" class="btn btn-y">Reset</button>
+      <button @click="update_counter('a')" class="btn btn-g">+</button>
+      <button
+        @click="add_favorite()"
+        :class="`btn btn-f ${isFavorite ? 'disabled' : ''}`"
+        :disabled="isFavorite"
+      >
+        Favorite
+      </button>
+
+      <button
+        @click="delete_favorite()"
+        :class="`btn btn-f ${!isFavorite ? 'disabled' : ''}`"
+        :disabled="!isFavorite"
+      >
+        Delete
+      </button>
+    </div>
+
+    <div class="fav-cont">
+      <h3 class="fav-title">Your numbers:</h3>
+      <ul class="fav-title">
+        <li v-for="num in favorites" class="fav-item">{{ num }}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
-const change_color = () => {
-
-  if (counter.value < 0) {
-    return "r";
-  } else if (counter.value > 0) {
-    return "g";
-  } else {
-    return "y";
-  }
+const add_favorite = () => {
+  favorites.value.push(counter.value)
+};
+const delete_favorite = () => {
+  favorites.value = favorites.value.filter(f => f !== counter.value);
 };
 
 const update_counter = (op) => {
@@ -38,13 +58,29 @@ const update_counter = (op) => {
   } else {
     counter.value = 0;
   }
-  counter_color.value = change_color();
 };
 
+const favorites = ref([]);
+
 const counter = ref(0);
-const counter_color = ref("y");
 
+const counter_color = computed(() => {
+  if (counter.value < 0) {
+    return "r";
+  } else if (counter.value > 0) {
+    return "g";
+  } else {
+    return "y";
+  }
+});
 
+const isFavorite = computed(() => {
+  if (favorites.value.indexOf(counter.value) !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+});
 </script>
 
 <style scoped>

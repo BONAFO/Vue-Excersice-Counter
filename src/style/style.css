@@ -13,6 +13,7 @@
       border: 1px solid #000;
       cursor: pointer;
       width: 100px;
+      transition: border .3s,  background-color .3s, color .3s;
   }
   
   .btn-r{
@@ -28,6 +29,19 @@
    background-color: yellow;
   }
 
+  .btn-f{
+    border: 2px solid yellow;    
+    background-color: black;
+    color: yellow;
+  }
+
+  .btn-f:hover{
+    border: 2px solid black;    
+    background-color: yellow;
+    color: black;
+  }
+
+
   .c-c-r{
     color: red;
   }
@@ -40,4 +54,11 @@
     color: yellow;
   }
 
-  
+.fav-title{
+  color: yellow;
+
+}
+
+.disabled{
+  opacity: .3;
+}
