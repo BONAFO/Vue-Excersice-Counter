@@ -12,7 +12,8 @@
       margin: 0% .3%;
       border: 1px solid #000;
       cursor: pointer;
-      width: 100px;
+      width: fit-content;
+      padding: 0% 20px;
       transition: border .3s,  background-color .3s, color .3s;
   }
   

@@ -34,7 +34,7 @@
     <div class="fav-cont">
       <h3 class="fav-title">Your numbers:</h3>
       <ul class="fav-title">
-        <li v-for="num in favorites" class="fav-item">{{ num }}</li>
+        <li :key="`element-${num}`" v-for="num in favorites" class="fav-item">{{ num }}</li>
       </ul>
     </div>
   </div>
